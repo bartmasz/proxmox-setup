@@ -1,0 +1,19 @@
+---
+- name: Configure IOMMU in Grub
+  ansible.builtin.lineinfile:
+    path: /etc/default/grub
+    regexp: "^GRUB_CMDLINE_LINUX_DEFAULT="
+    line: GRUB_CMDLINE_LINUX_DEFAULT="quiet iommu=pt"
+  notify:
+    - Update Grub config
+    - Reboot host and wait for it to restart
+
+- name: Add kernel modules
+  ansible.builtin.lineinfile:
+    path: /etc/modules
+    line: "{{ item }}"
+    state: present
+  loop: "{{ proxmox_kernel_modules }}"
+  notify:
+    - Update initramfs
+    - Reboot host and wait for it to restart

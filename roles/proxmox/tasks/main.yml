@@ -1,0 +1,24 @@
+---
+- name: Include pve packages tasks
+  ansible.builtin.include_tasks:
+    file: pve_packages.yml
+
+- name: Include virtualization tasks
+  ansible.builtin.include_tasks:
+    file: virtualization.yml
+
+- name: Include energy tasks
+  ansible.builtin.include_tasks:
+    file: energy.yml
+
+- name: Include sshd server tasks
+  ansible.builtin.include_tasks:
+    file: ssh.yml
+
+- name: Include shell tasks
+  ansible.builtin.include_tasks:
+    file: shell.yml
+
+- name: Include lxc templates tasks
+  ansible.builtin.include_tasks:
+    file: lxc_templates.yml

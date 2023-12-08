@@ -1,0 +1,8 @@
+---
+- name: Setup Proxmox host
+  hosts: silverstone
+  gather_facts: true
+
+  roles:
+    - name: Setup Proxmox node
+      role: proxmox

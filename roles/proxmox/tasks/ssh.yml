@@ -9,7 +9,7 @@
     mode: 0644
   with_items:
     - regexp: "^PasswordAuthentication"
-      line: "PasswordAuthentication no"
+      line: "PasswordAuthentication yes"
     - regexp: "^Port"
       line: "Port {{ proxmox_ssh_port }}"
     - regexp: "^UseDNS"
